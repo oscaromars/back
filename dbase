@@ -1,0 +1,22 @@
+Postgres root
+CREATE TABLE clientes (
+  ID SERIAL PRIMARY KEY,
+cedula VARCHAR(10),
+  name VARCHAR(30),
+  email VARCHAR(30)
+);
+
+CREATE TABLE citas (
+  ID SERIAL PRIMARY KEY,
+cedula VARCHAR(10),
+  fecha DATE,
+  servicio VARCHAR(40)
+
+);
+
+CREATE TABLE atenciones (
+  ID SERIAL PRIMARY KEY,
+cedula VARCHAR(10),
+  fecha DATE,
+  estado VARCHAR(15)
+);
