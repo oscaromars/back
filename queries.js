@@ -1,11 +1,23 @@
-const Pool = require('pg').Pool
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'peluqueria',
-  password: 'root',
-  port: 5432,
-})
+const mysql = require('mysql');
+
+const pool = mysql.createPool({
+    connectionLimit : 100,
+    host     : 'localhost',
+    user     : 'postgres',
+    password : 'root',
+    database : 'peluqueria',
+    debug    :  false
+});
+
+pool.query("SELECT * FROM TABLE_NAME",(err, data) => {
+    if(err) {
+        console.error(err);
+        return;
+    }
+    // rows fetch
+    console.log(data);
+});
+
 
 const getClientes = (request, response) => {
   pool.query('SELECT * FROM clientes ORDER BY id ASC', (error, results) => {
@@ -24,7 +36,7 @@ const createCliente = (request, response) => {
       throw error
     }
       response.status(200).json(results.rows)
-  
+
   })
 }
 
