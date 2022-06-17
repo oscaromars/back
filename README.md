@@ -6,11 +6,7 @@ linea 11 y linea 22,
 probar con el siguiente cambio en la linea 22
 ( se borra RETURNING * que es requerido para postgreSQL pero Mysql podria no reconocerlo)
 
-pool.query('INSERT INTO clientes (cedula, name, email) VALUES ($1, $2, $3)', [cedula, name, email], (error, results) => {
-
-
-otra opcion para cambio en la linea 22 puede ser:
-
 pool.query('INSERT INTO clientes (cedula, name, email) VALUES (?, ?, ?)', [cedula, name, email], (error, results) => {
+
 
 
