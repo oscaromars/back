@@ -4,6 +4,7 @@ en base a lo anterior, quizas sea necesario modificar los queries en el archivo 
 linea 11 y linea 22,
 
 probar con el siguiente cambio en la linea 22
+( se borra RETURNING * que es requerido para postgreSQL pero Mysql podria no reconocerlo)
 
 pool.query('INSERT INTO clientes (cedula, name, email) VALUES ($1, $2, $3)', [cedula, name, email], (error, results) => {
 
