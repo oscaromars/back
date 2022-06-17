@@ -1,12 +1,10 @@
 const mysql = require('mysql');
 
 const pool = mysql.createPool({
-    connectionLimit : 100,
     host     : 'localhost',
     user     : 'postgres',
     password : 'root',
-    database : 'peluqueria',
-    debug    :  false
+    database : 'peluqueria'
 });
 
 pool.query("SELECT * FROM TABLE_NAME",(err, data) => {
