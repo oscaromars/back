@@ -29,7 +29,7 @@ const getClientes = (request, response) => {
 const createCliente = (request, response) => {
   const { cedula, name, email } = request.body
 
-  pool.query('INSERT INTO clientes (cedula, name, email) VALUES ($1, $2, $3) RETURNING *', [cedula, name, email], (error, results) => {
+  pool.query('INSERT INTO clientes (cedula, name, email) VALUES (?, ?, ?)', [cedula, name, email], (error, results) => {
     if (error) {
       throw error
     }
@@ -49,12 +49,13 @@ const getCitas = (request, response) => {
 
 const createCita = (request, response) => {
   const { cedula, fecha, servicio } = request.body
-
-  pool.query('INSERT INTO citas (cedula, fecha, servicio) VALUES ($1, $2, $3) RETURNING *', [cedula, fecha, servicio], (error, results) => {
+  
+  pool.query('INSERT INTO clientes (cedula, fecha, servicio) VALUES (?, ?, ?)', [cedula, fecha, servicio], (error, results) => {
+  
     if (error) {
       throw error
     }
-    response.status(201).send(`User added with ID: ${results.rows[0].id}`)
+    response.status(200).json(results.rows)
   })
 }
 
@@ -70,11 +71,11 @@ const getAtenciones = (request, response) => {
 const createAtencion = (request, response) => {
   const { cedula, fecha, estado } = request.body
 
-  pool.query('INSERT INTO atenciones (cedula, fecha, estado) VALUES ($1, $2, $3) RETURNING *', [cedula, fecha, estado], (error, results) => {
+  pool.query('INSERT INTO clientes (cedula, fecha, estado) VALUES (?, ?, ?)', [cedula, fecha, estado], (error, results) => {
     if (error) {
       throw error
     }
-    response.status(201).send(`User added with ID: ${results.rows[0].id}`)
+      response.status(200).json(results.rows)
   })
 }
 
