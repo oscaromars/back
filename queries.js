@@ -50,7 +50,7 @@ const getCitas = (request, response) => {
 const createCita = (request, response) => {
   const { cedula, fecha, servicio } = request.body
   
-  pool.query('INSERT INTO clientes (cedula, fecha, servicio) VALUES (?, ?, ?)', [cedula, fecha, servicio], (error, results) => {
+  pool.query('INSERT INTO citas (cedula, fecha, servicio) VALUES (?, ?, ?)', [cedula, fecha, servicio], (error, results) => {
   
     if (error) {
       throw error
@@ -71,7 +71,7 @@ const getAtenciones = (request, response) => {
 const createAtencion = (request, response) => {
   const { cedula, fecha, estado } = request.body
 
-  pool.query('INSERT INTO clientes (cedula, fecha, estado) VALUES (?, ?, ?)', [cedula, fecha, estado], (error, results) => {
+  pool.query('INSERT INTO atenciones (cedula, fecha, estado) VALUES (?, ?, ?)', [cedula, fecha, estado], (error, results) => {
     if (error) {
       throw error
     }
