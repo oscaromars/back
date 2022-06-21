@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     user     : 'postgres',
     password : 'root',
     database : 'peluqueria',
-    port     : 3306
+    port     : 3306,
 });
 
 pool.query("SELECT * FROM TABLE_NAME",(err, data) => {
