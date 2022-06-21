@@ -8,18 +8,8 @@ const pool = mysql.createPool({
     port     : 3306,
 });
 
-pool.query("SELECT * FROM TABLE_NAME",(err, data) => {
-    if(err) {
-        console.error(err);
-        return;
-    }
-    // rows fetch
-    console.log(data);
-});
-
-
 const getClientes = (request, response) => {
-  pool.query('SELECT * FROM clientes ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT id,cedula, name, email FROM clientes ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
