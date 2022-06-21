@@ -23,7 +23,7 @@ const getClientes = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    response.status(200).json(results)
   })
 }
 
@@ -44,7 +44,7 @@ const getCitas = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    response.status(200).json(results)
   })
 }
 
@@ -56,7 +56,7 @@ const createCita = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    response.status(200).json(results,rows)
   })
 }
 
@@ -65,7 +65,7 @@ const getAtenciones = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    response.status(200).json(results)
   })
 }
 
